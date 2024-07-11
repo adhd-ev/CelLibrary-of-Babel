@@ -38,11 +38,8 @@ CELLSDICTIONARY = {"0":"{}", "1":"01", "2":"ij", "3":"AB",
                    "e":"efwxOP.=", "f":"ghyzQR?^", "x":"cduvMN+-"}
 
 def CheckCells_V3LB1(CELL,CELLSDICTIONARY):
-    listOfConditions = [    CELL in CELLSDICTIONARY["0"], CELL in CELLSDICTIONARY["1"], CELL in CELLSDICTIONARY["2"], CELL in CELLSDICTIONARY["3"],
-                            CELL in CELLSDICTIONARY["4"], CELL in CELLSDICTIONARY["5"], CELL in CELLSDICTIONARY["6"], CELL in CELLSDICTIONARY["7"],
-                            CELL in CELLSDICTIONARY["8"], CELL in CELLSDICTIONARY["9"], CELL in CELLSDICTIONARY["a"], CELL in CELLSDICTIONARY["b"],
-                            CELL in CELLSDICTIONARY["c"], CELL in CELLSDICTIONARY["d"], CELL in CELLSDICTIONARY["e"], CELL in CELLSDICTIONARY["f"], CELL in CELLSDICTIONARY["x"]]
-    return listOfConditions.index(True)
+    # Return index of CELL in CELLSDICTIONARY
+    return next(index for index, string in enumerate(CELLSDICTIONARY.values()) if CELL in string)
 
 def V3_Decode(V3code):
     V3code=V3code.split(";")
