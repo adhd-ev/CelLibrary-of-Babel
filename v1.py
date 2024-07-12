@@ -49,4 +49,27 @@ def V1_Decode(V1code: str):
     # Return LB1 code
     return f'LB1 {SIZE[0]} {SIZE[1]} {"".join(item for x in CELLAREA for item in x)}'
 
+def V1_Encode(LB1code: str):
+    LB1code = LB1code.split(' ')
+    SIZE = [int(LB1code[1]), int(LB1code[2])] # x,y
+    CELLS = list(LB1code[3])
+    V1CELLS = [] # List of cells in V1 format
+
+    for i, cell in enumerate(CELLS):
+        # If we are on a blank cell, skip
+        if cell == "0": continue
+
+        # Translate LB1 cell to V1 cell
+        CellCode = V1CELLSDICTIONARY[cell][0]
+
+        # Figure out X and Y of cell
+        CellY, CellX = divmod(i, SIZE[0])
+
+        # Append cell data to V1 CELLS
+        V1CELLS.append(f'{CellCode}.{CellX}.{CellY}')
+    
+    # Return V1 Code
+    return f'V1;{SIZE[0]};{SIZE[1]};;{",".join(V1CELLS)};;'
+
 print(V1_Decode("V1;11;4;3.0,9.0,2.1,4.1,8.1,9.1,1.2,5.2,7.2,9.2,0.3,6.3,9.3;0.1.0.0,3.1.1.0,1.1.2.0,2.1.3.0,5.1.4.0,4.1.5.0,7.1.6.0,8.1.7.0,6.1.8.0,0.2.0.1,3.2.1.1,1.2.2.1,2.2.3.1,5.2.4.1,4.2.5.1,7.2.6.1,8.2.7.1,6.2.8.1,0.3.0.2,3.3.1.2,1.3.2.2,2.3.3.2,5.3.4.2,4.3.5.2,7.3.6.2,8.3.7.2,6.3.8.2,0.0.0.3,3.0.1.3,1.0.2.3,2.0.3.3,5.0.4.3,4.0.5.3,7.0.6.3,8.0.7.3,6.0.8.3;ex-sample;"))
+print(V1_Encode("LB1 11 4 269abdefx00379abcefx00489abdefx00159abcefx00"))
