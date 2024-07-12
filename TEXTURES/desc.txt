@@ -1,0 +1,17 @@
+00 = empty
+01 = generator, right
+02 = generator, down
+03 = generator, left
+04 = generator, up
+05 = mover, right 
+06 = mover, down
+07 = mover, left
+08 = mover, up
+09 = clockwise rotator
+10 = counterclockwise rotator
+11 = push
+12 = slide, horisontal
+13 = slide, vertical
+14 = enemy
+15 = The Trash Cell (tm)
+16 = immobile
