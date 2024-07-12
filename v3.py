@@ -37,9 +37,7 @@ CELLSDICTIONARY = {"0":"{}", "1":"01", "2":"ij", "3":"AB",
                    "b":"abstKL%&", "c":"89IJ", "d":"qr!$",
                    "e":"efwxOP.=", "f":"ghyzQR?^", "x":"cduvMN+-"}
 
-def CheckCells_V3LB1(CELL,CELLSDICTIONARY):
-    # Return index of CELL in CELLSDICTIONARY
-    return next(index for index, string in enumerate(CELLSDICTIONARY.values()) if CELL in string)
+def CheckCells_V3LB1(CELL,CELLSDICTIONARY): return next(index for index, string in enumerate(CELLSDICTIONARY.values()) if CELL in string)
 
 def V3_Decode(V3code):
     V3code=V3code.split(";")
@@ -54,7 +52,7 @@ def V3_Encode(LB1code):
     SIZE = [LB1code[1],LB1code[2]] # x,y
     CELLS = list(LB1code[3])
     for i in range(len(CELLS)): CELLS[i]=V3E[LB1.index(CELLS[i])]
-    return f'V3;{SIZE[0]};{SIZE[1]};{"".join(CELLS)}'
+    return f'V3;{SIZE[0]};{SIZE[1]};{"".join(CELLS)};;'
 
 print(V3_Decode("V3;n;n;{0iAS6oGY24a8qegc{0iAS6oGY24a8qegc{{{aAaA"))
 print(V3_Encode("LB1 n n 0123456789abcdefx0123456789abcdefx000b3b3"))
