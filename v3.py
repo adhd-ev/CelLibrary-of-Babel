@@ -27,6 +27,7 @@
 ########################################################################################################
 #                                         thanks, uku1928305                                           #
 ########################################################################################################
+import base # For base conversion support
 
 V3  = list("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!$%&+-.=?^{}")
 LB1 = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","x"]
@@ -41,7 +42,7 @@ def CheckCells_V3LB1(CELL,CELLSDICTIONARY): return next(index for index, string 
 
 def V3_Decode(V3code):
     V3code=V3code.split(";")
-    SIZE = [V3code[1],V3code[2]] # x,y
+    SIZE = [base.BaseToNumber(V3code[1], 74, V3), base.BaseToNumber(V3code[2], 74, V3)] # x,y converted from base 74 to base 10
     CELLS = list(V3code[3])
     for i in range(len(CELLS)): CELLS[i]=LB1[CheckCells_V3LB1(CELLS[i],CELLSDICTIONARY)]
     #TODO: size base 74 -> base 10
@@ -49,10 +50,10 @@ def V3_Decode(V3code):
 
 def V3_Encode(LB1code):
     LB1code=LB1code.split(' ')
-    SIZE = [LB1code[1],LB1code[2]] # x,y
+    SIZE = [base.NumberToBase(int(LB1code[1]), 74, V3), base.NumberToBase(int(LB1code[2]), 74, V3)] # x,y: converted from base 10 to base 74
     CELLS = list(LB1code[3])
     for i in range(len(CELLS)): CELLS[i]=V3E[LB1.index(CELLS[i])]
     return f'V3;{SIZE[0]};{SIZE[1]};{"".join(CELLS)};;'
 
 print(V3_Decode("V3;n;n;{0iAS6oGY24a8qegc{0iAS6oGY24a8qegc{{{aAaA"))
-print(V3_Encode("LB1 n n 0123456789abcdefx0123456789abcdefx000b3b3"))
+print(V3_Encode("LB1 23 23 0123456789abcdefx0123456789abcdefx000b3b3"))
