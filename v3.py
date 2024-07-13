@@ -45,7 +45,6 @@ def V3_Decode(V3code):
     SIZE = [base.BaseToNumber(V3code[1], 74, V3), base.BaseToNumber(V3code[2], 74, V3)] # x,y converted from base 74 to base 10
     CELLS = list(V3code[3])
     for i in range(len(CELLS)): CELLS[i]=LB1[CheckCells_V3LB1(CELLS[i],CELLSDICTIONARY)]
-    #TODO: size base 74 -> base 10
     return f'LB1 {SIZE[0]} {SIZE[1]} {"".join(CELLS)}'
 
 def V3_Encode(LB1code):
