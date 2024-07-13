@@ -61,3 +61,6 @@ $RECYCLE.BIN/
 # Python VENV
 .venv/
 venv/
+
+# Python
+__pycache__/
