@@ -8,8 +8,8 @@
 # * 0-generator  * 1-cw rotator * 2-ccw rotator * 3-mover                                              #
 # * 4-slide      * 5-push       * 6-wall        * 7-enemy * 8-trash                                    #
 ########################################################################################################
-# The cell direction is right + rot times 90 degrees clockwise (RDLU).
-# The X and Y are the same as calculating positions of placeables.
+# The cell direction is right + rot times 90 degrees clockwise (RDLU).                                 #
+# The X and Y are the same as calculating positions of placeables.                                     #
 ########################################################################################################
 # Example V1 level:                                                                                    #
 # V1;11;4;3.0,9.0,2.1,4.1,8.1,9.1,1.2,5.2,7.2,9.2,0.3,6.3,9.3;0.1.0.0,3.1.1.0,1.1.2.0,2.1.3.0,5.1.4.0, #
@@ -19,6 +19,8 @@
 ########################################################################################################
 #                                         thanks, uku1928305                                           #
 ########################################################################################################
+
+# TODO: 74 Base support
 
 V1CELLSDICTIONARY = {"1": [0.0], "2": [0.1], "3": [0.2], "4": [0.3],
                      "5": [3.0], "6": [3.1], "7": [3.2], "8": [3.3],
