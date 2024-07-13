@@ -1,6 +1,5 @@
 ########################################################################################################
 # V1 code comes like this: V1;width;height;placeables;cells;title;                                     #
-# Width and height are in base 74, base numbers 0-73 are:                                              #
 # The placeables are in form X.Y, separated by commas. The X counts from left to right and and Y       #
 # counts from bottom to top. The cells are in form type.rot.X.Y, also separated by commas.             #
 ########################################################################################################
